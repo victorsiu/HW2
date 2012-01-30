@@ -18,24 +18,34 @@
 #include <vector>
 #include <string>
 
+using namespace std;
+
 class HashTable
 {
 
  public:
-  // int capacity;  Since we're using a vector, we shouldn't need the capacity
-  // The hash table should be based on a basic array rather than a vector
+  // size: the number of items in the hash table.
   int size;
 
   HashTable();
-  bool contains(string item);
-  void add(string*  item);
-  void add(vector<string> items);
-  int get_hash(string item);
-  bool remove(string item);
-
+  ~HashTable();
+  bool contains( string );
+  bool add( string );
+  bool add( vector<string> );
+  int getCapacity();
 
  private:
-  vector<string> hashTable;
+  // loadFactor: the number of items in any one bucket of the hash table.
+  //             The table will re-hash if this is ever more than 3.
+  // capacity: The total capacity of the hash table.
+  //           doubles with each re-hash.
+  // hashTable: Pointer to an array of vector<string> objects.
+  int loadFactor, capacity;
+  vector<string> *hashTable;
+
+  string stringToLower( string );
+  int getHash( string );
+  void reHash();
 
 };
 
