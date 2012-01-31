@@ -1,0 +1,58 @@
+ #----------------------------------------------------------------------------
+# Author: H. James de St. Germain
+# Date: Spring 2011
+#
+# Sample Makefile
+#----------------------------------------------------------------------------
+
+#
+# First declare aliases for use later on
+#
+CC              = g++
+CFLAGS          = -g -Wall -pedantic
+CPPFLAGS        = $(CFLAGS)
+LIBS            = # -lm
+
+
+################################################################
+# ALL
+#
+# when you run make by itself, this is what it will try to create
+#
+all: constructor_main circular_classes
+
+
+################################################################
+# 
+# Rules for each executable/compilable unit
+#
+# Commented out lines show variations on how to compile
+# and if all are commented out, this uses the implicit rule
+#
+# Don't forget tabs before rules!
+#
+
+constructor_main: constructor_main.C constructor_class.o
+#       $(CC) $(CFLAGS) -o $@ $@.C constructor_class.o
+#       g++ -g -Wall -pedantic -o constructor_main constructor_main.C constructor_class.o
+
+circular_classes: circular_classes.C
+        $(CC) $(CFLAGS) -o $@ $@.C 
+#       g++ -g -Wall -pedantic -o circular_classes circular_classes.C 
+
+constructor_class.o: constructor_class.C constructor_class.h
+#       implicit rule
+#       $(CC) $(CFLAGS) -o $@ $@.C 
+#       g++ -g -Wall -pedantic -c constructor_class.C 
+
+
+################################################################
+#
+# Define what it means to "cleanup" (remove all .o's and executables)
+#
+clean:
+        rm -rf *.o circular_classes constructor_main
+
+#----------------------------------------------------------------------------
+# End of file.
+#----------------------------------------------------------------------------

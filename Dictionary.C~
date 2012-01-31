@@ -28,7 +28,7 @@ Dictionary::Dictionary( string fileName )
 {
   this->reader = new FileReader( fileName );
 
-  SetDictionary( reader->ProcessFile() );
+  SetDictionary( reader->GetWords() );
 }
 
 /**
@@ -36,11 +36,11 @@ Dictionary::Dictionary( string fileName )
  * and places each word in the vector into the hash table and BST
  * that represent the dictionary.
  */
-void Dictionary::SetDictionary( vector<string>* wordList )
+void Dictionary::SetDictionary( vector<string> wordList )
 {
   for(uint i = 0; i < wordList.size(); i++)
     {
-      dictionary.add( wordList->at(i) );
+      dictionary.add( wordList[i] );
     }
 }
 
