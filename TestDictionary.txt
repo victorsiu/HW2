@@ -1,0 +1,14 @@
+apple
+banana
+orange
+blue
+green
+purple
+zebra
+walk
+talk
+punch
+kill
+pottery
+smile
+happy

@@ -19,7 +19,7 @@ LIBS            = # -lm
 #
 # when you run make by itself, this is what it will try to create
 #
-all: constructor_main circular_classes
+all: main
 
 
 ################################################################
@@ -32,26 +32,21 @@ all: constructor_main circular_classes
 # Don't forget tabs before rules!
 #
 
-constructor_main: constructor_main.C constructor_class.o
-#       $(CC) $(CFLAGS) -o $@ $@.C constructor_class.o
-#       g++ -g -Wall -pedantic -o constructor_main constructor_main.C constructor_class.o
+main: AVLTree.o FileReader.o HashTable.o Dictionary.o TestMain.c
+	$(CC) $(CFLAGS) -o $@ $@.C AVLTree.o FileReader.o HashTable.o Dictionary.o
+#       g++ -g -Wall -pedantic -o main AVLTree.o FileReader.o HashTable.o Dictionary.o TestMain.c
 
-circular_classes: circular_classes.C
-        $(CC) $(CFLAGS) -o $@ $@.C 
-#       g++ -g -Wall -pedantic -o circular_classes circular_classes.C 
-
-constructor_class.o: constructor_class.C constructor_class.h
-#       implicit rule
-#       $(CC) $(CFLAGS) -o $@ $@.C 
-#       g++ -g -Wall -pedantic -c constructor_class.C 
-
+AVLTree.o: AVLNode.c AVLNode.h AVLTree.c AVLTree.h
+HashTable.o: HashTable.C HashTable.h
+FileReader.o: FileReader.h FileReader.c
+Dictionary.o: Dictionary.C Dictionary.h
 
 ################################################################
 #
 # Define what it means to "cleanup" (remove all .o's and executables)
 #
 clean:
-        rm -rf *.o circular_classes constructor_main
+	rm -rf *.o main
 
 #----------------------------------------------------------------------------
 # End of file.

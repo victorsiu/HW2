@@ -2,7 +2,7 @@
  * Dictionary.C
  *
  * Team: Reality Version 2
- * Authors: Adam Nieman & Victor Siu
+ * Authors: Adam Nieman & Victor Siu & Sarah Spall & Theresa Krause
  * Date: Jan 30, 2012
  *
  * The dictionary represents a list of words. It is constructed with
@@ -28,6 +28,7 @@ Dictionary::Dictionary( string fileName )
 {
   this->reader = new FileReader( fileName );
 
+  dictionary = new HashTable();
   SetDictionary( reader->ProcessFile() );
 }
 
@@ -38,9 +39,9 @@ Dictionary::Dictionary( string fileName )
  */
 void Dictionary::SetDictionary( vector<string>* wordList )
 {
-  for(uint i = 0; i < wordList.size(); i++)
+  for(uint i = 0; i < wordList->size(); i++)
     {
-      dictionary.add( wordList->at(i) );
+      dictionary->add( wordList->at(i) );
     }
 }
 
@@ -51,7 +52,7 @@ void Dictionary::SetDictionary( vector<string>* wordList )
  */
 bool Dictionary::spelled_correctly( string givenWord )
 {
-  return dictionary.contains( givenWord );
+  return dictionary->contains( givenWord );
 }
 
 /**

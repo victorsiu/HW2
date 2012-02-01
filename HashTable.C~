@@ -38,6 +38,7 @@ HashTable::~HashTable()
   //delete hashTable;
 }
 
+
 /**
  * Takes in a string and returns a copy of that string with only
  * lower-case letters.

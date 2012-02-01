@@ -21,7 +21,7 @@ using namespace std;
 class Dictionary
 {
  public:
-  HashTable* dictionary;
+  HashTable dictionary;
   FileReader *reader;
   int totalWords;
 
@@ -31,5 +31,5 @@ class Dictionary
   bool best_matches( string, vector<string>&, int );
 
  private:
-  void SetDictionary( vector<string>* words );
+  void SetDictionary( vector<string> );
 };

@@ -32,11 +32,12 @@ all: main
 # Don't forget tabs before rules!
 #
 
-main: AVLTree.o FileReader.o HashTable.o Dictionary.o TestMain.c
-	$(CC) $(CFLAGS) -o $@ $@.C AVLTree.o FileReader.o HashTable.o Dictionary.o
+main: AVLNode.o AVLTree.o FileReader.o HashTable.o Dictionary.o TestMain.c
+	$(CC) $(CFLAGS) -o $@ AVLNode.o AVLTree.o FileReader.o HashTable.o Dictionary.o TestMain.c
 #       g++ -g -Wall -pedantic -o main AVLTree.o FileReader.o HashTable.o Dictionary.o TestMain.c
 
-AVLTree.o: AVLNode.c AVLNode.h AVLTree.c AVLTree.h
+AVLNode.o: AVLNode.c AVLNode.h
+AVLTree.o: AVLTree.c AVLTree.h
 HashTable.o: HashTable.C HashTable.h
 FileReader.o: FileReader.h FileReader.c
 Dictionary.o: Dictionary.C Dictionary.h
