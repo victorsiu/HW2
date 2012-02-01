@@ -1,0 +1,58 @@
+/**
+ *
+ *Linked List.C
+ *
+ *Authors: Adam Nieman & Victor Siu
+ * 
+ * 
+ *Comments:
+ *
+ */
+
+
+#include<string>
+#include "LinkedList.h"
+
+using namespace std;
+
+  // Node* head;
+  // Node* tail;
+
+  LinkedList()
+  {
+    head = null;
+    tail = null;
+    size = 0;
+  }
+
+  bool contains(string item)
+  {
+    //If nothing is in our LinkedList, return false
+    if(size = 0)
+      return false;
+
+    Node* current = head;
+    for(uint i = 0; i < this-> size; i++)
+      {
+	if(current.data == item)
+	  {
+	    return true;
+	  }
+	current->next = head.next;
+      }
+  }
+  void addLast(string item)
+  {
+  }
+  bool removeLast()
+  {
+  }
+  bool remove(int index)
+  {
+  }
+  Node getFirst()
+  { 
+  }
+  Node getLast()
+  {
+  }

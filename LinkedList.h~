@@ -1,0 +1,36 @@
+/**
+ *
+ *Linked List.h
+ *
+ *Authors: Adam Nieman & Victor Siu
+ * 
+ * 
+ *Comments:
+ *
+ */
+
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
+
+#include<string>
+
+using namespace std;
+
+Class LinkedList
+{
+ public:
+  Node* current;
+  Node* head;
+  Node* tail;
+
+  LinkedList();
+
+  bool contains(string item);
+  void add(string item);
+  bool remove(string item);
+
+
+};
+
+#endif

@@ -11,9 +11,12 @@ class AVLTree
   void insertMany(vector<string*>* data);
   AVLNode* find(string* data); // do we want this to be a pointer or don't we? the t
   void inOrderPrintOut();
+  vector<string>* SearchForSuggestions(string word);
+ 
 
  private:
   AVLNode* root;
+  AVLNode* current;
   int height();
   int height(AVLNode* node);
   AVLNode* rotateLeftChild(AVLNode* node);
@@ -21,4 +24,5 @@ class AVLTree
   AVLNode* doubleRotateLeftChild(AVLNode* node);
   AVLNode* doubleRotateRightChild(AVLNode* node);
   void inOrderPrintOut(AVLNode* node);
+  void SearchForSuggestions(string word, vector<string>* suggestions);
 };

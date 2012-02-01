@@ -1,0 +1,16 @@
+/**
+ *
+ *FileWriter.C
+ *
+ *
+ *Authors: Adam Nieman & Victor Siu
+ *
+ *Comments:
+ */
+
+#include "FileWriter.h"
+
+
+  FileWriter();
+  void OutputHTML( string filename, vector<string> topWords, vector<string> misspelledWords );
+  void OutputTest( string, vector<Student>);
