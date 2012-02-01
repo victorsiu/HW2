@@ -158,4 +158,51 @@ void AVLTree::inOrderPrintOut(AVLNode* node)
   inOrderPrintOut(node->rightChild);
 }
 
+//Driver Method for searching
+vector<string>*  AVLTree::SearchForSuggestions(String word)
+{
 
+  AVLNode * current = root;
+
+  if(current == NULL)
+    return NULL;
+
+  vector<string> * suggestions = new vector<string>();
+
+  SearchForSuggestions(word, suggestions);
+  
+
+}
+
+void AVLTree::SearchForSuggestions(String word, vector<string>* suggestions)
+{
+ 
+  double LIKENESS_THRESHOLD = 0.70; //70%  Change as necessary.  Searches for words that are 70% alike.
+
+  if(current == NULL)
+    return;
+
+  double sameLetters = 0; //Use a double for ease of conversion
+  for(int i = 0; i < current->data->length(); i++)
+    {
+      //Account for duplicate letters later
+      string letter =  word.at(i).c_str();
+      if(current->data->find(letter) != -1)//If it can find the letter
+	{
+	  sameLetters++;
+	}
+    }
+
+  double likeness = (  sameLetters / (double)(data->length())  );
+
+  if(likeness >= LIKENESS_THRESHOLD)//If its enough alike, add it to the suggestions
+    {
+      suggestions-> push_back();
+    }
+
+  current = current -> leftChild;//Search the left child.
+  SearchForSuggestions(word, suggestions);
+
+  current = current -> rightChild;//Then search the right child.
+  SearchForSuggestions(word, suggestions);
+}
