@@ -11,10 +11,11 @@
  * 
  */
 
-#include "HashTable.h"
-#include "FileReader.h"
 #include <vector>
 #include <string>
+#include "HashTable.h"
+#include "FileReader.h"
+#include "AVLTree.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class Dictionary
 {
  public:
   HashTable* dictionary;
+  AVLTree* BSTdictionary;
   FileReader *reader;
   int totalWords;
 

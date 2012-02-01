@@ -27,9 +27,11 @@ Dictionary::Dictionary(){}
 Dictionary::Dictionary( string fileName )
 {
   this->reader = new FileReader( fileName );
-
+  vector<string>* wordList = reader->ProcessFile();
+  BSTdictionary = new AVLTree(wordList);
   dictionary = new HashTable();
-  SetDictionary( reader->ProcessFile() );
+  SetDictionary(wordList);
+
 }
 
 /**
@@ -39,10 +41,10 @@ Dictionary::Dictionary( string fileName )
  */
 void Dictionary::SetDictionary( vector<string>* wordList )
 {
-  for(uint i = 0; i < wordList->size(); i++)
-    {
-      dictionary->add( wordList->at(i) );
-    }
+   for(uint i = 0; i < wordList->size(); i++)
+     {
+       dictionary->add( wordList->at(i) );
+     }
 }
 
 /**

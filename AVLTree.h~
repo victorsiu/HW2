@@ -18,6 +18,7 @@ class AVLTree
 
  private:
   AVLNode* root;
+  AVLNode* current;
   int height();
   int height(AVLNode* node);
   AVLNode* rotateLeftChild(AVLNode* node);
@@ -25,6 +26,6 @@ class AVLTree
   AVLNode* doubleRotateLeftChild(AVLNode* node);
   AVLNode* doubleRotateRightChild(AVLNode* node);
   void inOrderPrintOut(AVLNode* node);
-  void SearchForSuggestions(string word, vector<string>* suggestions,AVLNode * parent);
+  void SearchForSuggestions(string word, vector<string>* suggestions);
 };
 #endif

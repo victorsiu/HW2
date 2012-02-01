@@ -28,6 +28,7 @@ Dictionary::Dictionary( string fileName )
 {
   this->reader = new FileReader( fileName );
 
+  dictionary = new HashTable();
   SetDictionary( reader->ProcessFile() );
 }
 

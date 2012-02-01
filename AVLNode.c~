@@ -4,7 +4,7 @@
 // AVLNode* leftChild
 // AVLNode* rightChild
 
-AVLNode::AVLNode(string data)
+AVLNode::AVLNode(string* data)
 {
   this->data = data;
   this->leftChild = NULL;
@@ -12,7 +12,7 @@ AVLNode::AVLNode(string data)
   this->height = 0;
 }
 
-AVLNode::AVLNode(string data, AVLNode* left, AVLNode* right)
+AVLNode::AVLNode(string* data, AVLNode* left, AVLNode* right)
 {
   this->data = data;
   this->leftChild = left;
