@@ -14,8 +14,9 @@
 #include "HashTable.h"
 #include <stdlib.h>
 #include <ctype.h>
+#include <iostream>
 
-
+using namespace std;
 /**
  * Constructor for HashTable.
  * Sets the size and load factor to 0, and the initial capacity to 10.
@@ -65,22 +66,32 @@ string HashTable::stringToLower( string item )
  */
 int HashTable::getHash( string element )
 {
-  element = stringToLower( element );
+  // element = stringToLower( element );
 
-  int result = 3 * capacity + 333;
-  int count = 13;
-  int letter = 0;
+  // int result = 3 * capacity + 333;
+  // int count = 13;
+  // int letter = 0;
 
-  for(uint i = 0; i < element.length(); i++)
+  // for(uint i = 0; i < element.length(); i++)
+  //   {
+  //     letter = element[i];
+  //     result = result * ( letter * count );
+  //     count += 7;
+  //   }
+
+  // result = (result % capacity );
+
+
+
+
+  uint total = 0;
+		
+  for(uint i = 0; i < element.size(); i++)
     {
-      letter = element[i];
-      result = result + ( letter * count );
-      count += 7;
+      total +=(((int) element.at(i)) *31)^(element.size() - i);
     }
 
-  result = (result % capacity );
-
-  return abs(result);
+  return (total % capacity);
 }
 
 
@@ -102,10 +113,11 @@ void HashTable::reHash()
   capacity = capacity * 2;
 
   //Create a temporary pointer to the hashTable.
-  vector<string> *temp = hashTable;
+  vector<string>* temp = hashTable;
 
   //Give the global pointer a new array for the new hash table.
   hashTable = new vector<string>[capacity];
+
 
   //Loop through the origianl table (currently pointed to by temp)
   for(uint i = 0; i < searchSize; i++)
@@ -180,8 +192,8 @@ bool HashTable::add(string element)
   if( hashTable[ hashIndex ].size() > (uint) loadFactor )
     loadFactor = hashTable[ hashIndex ].size();
 
-  //If the loadFactor is higher than 3, we re-hash the table.
-  if( loadFactor > 3 )
+  //If the loadFactor is higher than 50, we re-hash the table.
+  if( loadFactor > 100 )
     reHash();
 
   return true;

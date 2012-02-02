@@ -41,7 +41,7 @@ class HashTable
   //           doubles with each re-hash.
   // hashTable: Pointer to an array of vector<string> objects.
   int loadFactor, capacity;
-  vector<string> *hashTable;
+  vector<string> * hashTable;
 
   string stringToLower( string );
   int getHash( string );
