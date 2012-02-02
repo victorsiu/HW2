@@ -20,6 +20,10 @@ AVLTree::~AVLTree()
 
 }
 
+void AVLTree::insert(string data)
+{
+  insert(root, data);
+}
 AVLNode* AVLTree::insert(AVLNode* current,string data)
 {
   if(root == NULL)
@@ -55,6 +59,13 @@ AVLNode* AVLTree::insert(AVLNode* current,string data)
 	    current = doubleRotateRightChild(current);
 	}
     }
+
+  //the data is equal, so the word already appeared in the tree, increment the count 
+  else if(strcmp(data.c_str(), current->data.c_str()) == 0)
+    {
+      current->count++;
+    }
+
   if(height(current->leftChild) > height(current->rightChild))
     {
       current->height = height(current->leftChild);
@@ -146,17 +157,29 @@ AVLNode* AVLTree::doubleRotateRightChild(AVLNode* node)
 
 }
 
-void AVLTree::inOrderPrintOut()
+void AVLTree::inOrderPrintOut(vector<AVLNode>* topWords)
 {
-  inOrderPrintOut(this->root);
+  inOrderPrintOut(this->root, topWords);
 }
-void AVLTree::inOrderPrintOut(AVLNode* node)
+
+void AVLTree::inOrderPrintOut(AVLNode* node, vector<AVLNode>* topWords)
 {
   if(node == NULL)
     return;
-  inOrderPrintOut(node->leftChild);
-  cout<< node->data << endl;
-  inOrderPrintOut(node->rightChild);
+  inOrderPrintOut(node->leftChild, topWords);
+  if(topWords->size() < topWords->capacity())
+    topWords->push_back(*node);
+  else
+    {
+      int smallest;
+      for(uint i = 0; i < topWords->size(); i ++)
+	{
+	  if(topWords->at(i).count < topWords->at(smallest).count)
+	    smallest = i;
+	}
+      topWords->at(smallest) = *node;
+    }
+  inOrderPrintOut(node->rightChild, topWords);
 }
 
 //Driver Method for searching

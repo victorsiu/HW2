@@ -15,6 +15,7 @@ class AVLNode
   AVLNode* rightChild;
   string data;
   int height;
+  int count;
 };
 
 #endif

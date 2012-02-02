@@ -7,6 +7,7 @@
 AVLNode::AVLNode(string data)
 {
   this->data = data;
+  this->count = 1;
   this->leftChild = NULL;
   this->rightChild = NULL;
   this->height = 0;

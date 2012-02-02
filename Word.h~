@@ -1,0 +1,7 @@
+
+class Word
+{
+ public:
+  string data; //the word itself
+  int count; //how many times the word appears in the book
+};

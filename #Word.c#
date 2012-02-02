@@ -1,0 +1,12 @@
+#include "Word.h"
+
+Word::Word(string data)
+{
+  this->data = data;
+  this->count = 1;
+}
+
+void Word::incrementCount()
+{
+  this->count = count + 1;
+}

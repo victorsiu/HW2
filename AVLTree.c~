@@ -177,7 +177,6 @@ vector<string>*  AVLTree::SearchForSuggestions(string word)
 
 void AVLTree::SearchForSuggestions(string word, vector<string>* suggestions, AVLNode* currentNode)
 {
-  stringstream ss;
   double LIKENESS_THRESHOLD = 0.70; //70%  Change as necessary.  Searches for words that are 70% alike.
 
   
@@ -188,10 +187,8 @@ void AVLTree::SearchForSuggestions(string word, vector<string>* suggestions, AVL
   for(uint i = 0; i < currentNode->data.size(); i++)
     {
       //Account for duplicate letters later
-      string letter;
-      ss << word[i];
-      ss >> letter;
-      if(currentNode->data.find(letter) != string::npos)//If it can find the letter
+      char letter = word[i];
+      if(currentNode->data.find(letter,0) != string::npos)//If it can find the letter
 	{
 	  sameLetters++;
 	}

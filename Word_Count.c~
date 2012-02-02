@@ -1,0 +1,31 @@
+#include "Word_Count.h"
+
+Word_Count::Word_Count()
+{
+  tree = new AVLTree();
+}
+Word_Count::Word_Count(AVLTree& t)
+{
+  //this->filename = filename;
+  //tree = new AVLTree();
+  
+  //FileReader reader(filename);
+  //tree->insertMany(reader.ProcessFile());
+  this->tree = t;
+}
+
+void Word_Count::add_word( string& word )
+{
+  tree->insert(tree->root, word);
+}
+
+int  Word_Count::get_word_count( string& word )
+{
+  AVLNode node = tree->find(word);
+  if(node == NULL)
+    return 0;
+  else
+    {
+      return node->count;
+    }
+}

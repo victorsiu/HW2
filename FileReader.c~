@@ -34,5 +34,6 @@ void FileReader::ProcessWord(string* word)
 	  iter = word->erase(iter);
 	}
     }
+  // string temp = "stop here...";
 }
 

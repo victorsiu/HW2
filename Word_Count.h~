@@ -1,0 +1,14 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Word_Count
+{
+ public:
+  Word_Count(string filename);
+  void add_word(string word);
+  int get_word_count(string word);
+  void get_top_words(vector<string> &word_list, vector<int> &counts, int count=50);
+  
+}
