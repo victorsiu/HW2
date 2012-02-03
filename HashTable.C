@@ -66,6 +66,24 @@ string HashTable::stringToLower( string item )
  */
 int HashTable::getHash( string element )
 {
+  // element = stringToLower( element );
+
+  // int result = 3 * capacity + 333;
+  // int count = 13;
+  // int letter = 0;
+
+  // for(uint i = 0; i < element.length(); i++)
+  //   {
+  //     letter = element[i];
+  //     result = result * ( letter * count );
+  //     count += 7;
+  //   }
+
+  // result = (result % capacity );
+
+
+
+
   uint total = 0;
 		
   for(uint i = 0; i < element.size(); i++)
