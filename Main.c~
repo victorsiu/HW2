@@ -1,0 +1,70 @@
+/**
+ * Main.c
+ *
+ * Team: Reality Version 2
+ * Authors: Adam Nieman & Victor Siu
+ *
+ * The main method for running the Docutment Analysis program. This program
+ * accepts the following parameters:
+ * '-d' :A flag to indicate that the next argument is a filename that is to be
+ *       used as a base dictionary for the analysis.
+ * '-n' :The next argument is the total number of 'n' most commonly used words in the analyzed document.
+ * '-c' :The list of arguments following this flag are the filenames of documentsa we wish to
+ *       spell-check and analyze. If this flag is missing, then there will be an error.
+ */
+
+int
+main( int arg_count, char* arg_list[] )
+{
+  bool CFlagExists = false;
+  string dictionaryFileName = "words";  //Default dictionary file name.
+  vector<string> fileNamesToCheck;      //Empty list of file names to be checked / analyzed.
+  int numberTopWords = 50;              //Default number of top words.
+
+  //Loop through the list of srguments until we find one of the appropriate flags.
+  for(uint i = 1; i < arg_count; i++)
+    {
+      string currentArg = arg_list[i];
+
+      //Check for a flag.
+      if( currentArg.compare( "-d" ) == 0 )
+	{
+	  //Add the next argument as the file name for the dictionary.
+	  dictionaryFileName = arg_list[i + 1];
+	  i++;
+	}
+      else if( currentArg.compare( "-c" ) == 0 )
+	{
+	  CFlagExists = true;
+	  i++;
+
+	  //Loop through the next few arguments for file names.
+	  //Stop the loop at end of arg list or next flag.
+	  for(uint j = i; j < arg_count; j++, i++)
+	    {
+	      currentArg = arg_list[j];
+
+	      //If the current argument is a new flag, break the loop, move on.
+	      if( (currentArg.compare( "-d" ) == 0) || (currentArg.compare( "-n" ) == 0) )
+		break;
+
+	      fileNamesToCheck.push_back( currentArg );
+	    }
+	}
+      else if( currentArg.compare( "-n" ) == 0 )
+	{
+	  numberTopWords = atoi( arg_list[i + 1].c_str );  //the "atoi" function will read the string (char array) as an int.
+	  i++;
+	}
+      else
+	{
+	  perror("ERROR: Unknown option.\n");
+	  cout << "Options include: '-d': dictionary filename. '-n': number of top words. '-c':documents to anaylze." << endl;
+	  cout << "EXAMPLE: -d dictionary.txt -n 50 -c analyzeMe.txt analyzeMeToo.txt" << endl;
+	}
+    }
+
+  if(!CflagExists)
+    {
+    }
+}
