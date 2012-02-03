@@ -16,14 +16,23 @@ int main(int argCount, char* args[])
   //for(uint i = 0; i < answers->size(); i ++)
   //cout << answers->at(i) << endl;
 
+  vector<string> word_list; 
+  vector<int> counts; 
+  vector<int> &count_ = counts;
+  vector<string> &words = word_list;
   AVLTree* tree = new AVLTree();
   FileReader reader("AnotherTest.txt");
   tree->insertMany(reader.ProcessFile());
   Word_Count count(tree);
   int test = count.get_word_count("one");
   cout << test << endl;
-  
-  // Word_Count count2();
+  count.get_top_words(words,count_, 2);
+  for(uint i = 0; i < word_list.size(); i ++)
+    {
+      cout << word_list.at(i) << endl;
+      cout << counts.at(i) << endl;
+    }
+// Word_Count count2();
   // vector<string>* words = reader.ProcessFile()
   return 0;
 }

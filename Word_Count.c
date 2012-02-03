@@ -34,16 +34,24 @@ int  Word_Count::get_word_count( string word )
 
 void Word_Count::get_top_words(vector<string>& word_list, vector<int>& counts, int count)
 {
-  vector<AVLNode>* topWords = new vector<AVLNode>();
+  vector<AVLNode>* topWords = new vector<AVLNode>(count);
   tree->inOrderPrintOut(topWords);
+  quicksort(topWords, 0, topWords->size() -1);
+  for(int i = topWords->size()-1 ; i > -1; i --)
+    {
+      word_list.push_back(topWords->at(i).data);
+      counts.push_back(topWords->at(i).count);
+    }
 }
-
+/*
+ *Quick Sort method to sort the nodes in descending order
+ */
 int Word_Count::partition(vector<AVLNode>* nodes, int left, int right,int  pivotIndex)
 {
   int pivotValue = nodes->at(pivotIndex).count;
   AVLNode temp = nodes->at(pivotIndex);
-  nodes->at(pivotIndex) = nodes->at(nodes->size());
-  nodes->at(nodes->size()) = temp;
+  nodes->at(pivotIndex) = nodes->at(nodes->size()-1);
+  nodes->at(nodes->size()-1) = temp;
   int storeIndex = left;
   for(int i = left; i < right; i ++)
     {

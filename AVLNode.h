@@ -6,6 +6,10 @@ using namespace std;
 class AVLNode
 {
  public:
+  AVLNode();
+  /*
+   *Constructor that takes in the data to be contained in the node
+   */
   AVLNode(string data);
   AVLNode(string data, AVLNode* left, AVLNode* right);
   ~AVLNode();

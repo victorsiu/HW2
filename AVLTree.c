@@ -171,13 +171,14 @@ void AVLTree::inOrderPrintOut(AVLNode* node, vector<AVLNode>* topWords)
     topWords->push_back(*node);
   else
     {
-      int smallest;
-      for(uint i = 0; i < topWords->size(); i ++)
+      int smallest = 0;
+      for(uint i = 1; i < topWords->size(); i ++)
 	{
 	  if(topWords->at(i).count < topWords->at(smallest).count)
 	    smallest = i;
 	}
-      topWords->at(smallest) = *node;
+      if(topWords->at(smallest).count < node->count)
+	topWords->at(smallest) = *node;
     }
   inOrderPrintOut(node->rightChild, topWords);
 }
